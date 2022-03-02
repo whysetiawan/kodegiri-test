@@ -26,7 +26,7 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
-import apiClient from './src/configs/apiClient';
+import apiClient from './src/shared/helpers/apiClient';
 
 const Section: React.FC<{
   title: string;

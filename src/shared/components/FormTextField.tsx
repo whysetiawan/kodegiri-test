@@ -42,11 +42,13 @@ const FormTextField = React.forwardRef<TextInput, inputType>((props, ref) => {
           },
         ]}>
         <View style={globalStyles.row}>
+          {props.prefix ? props.prefix : null}
           <TextInput
             placeholderTextColor={colors.primary}
             onFocus={_onFocus}
             onBlur={_onBlur}
             {...props}
+            style={globalStyles.displayFlex}
             underlineColorAndroid={'transparent'}
             ref={ref}
           />

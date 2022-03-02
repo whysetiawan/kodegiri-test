@@ -1,8 +1,8 @@
 import axios, {AxiosError} from 'axios';
 import {setupCache, StorageValue} from 'axios-cache-interceptor';
 import {MMKV} from 'react-native-mmkv';
-import {API_KEY1, API_KEY2} from '../shared/constants/api_key';
-import BASE_URL from '../shared/constants/base_url';
+import {API_KEY1, API_KEY2} from '../constants/api_key';
+import BASE_URL from '../constants/base_url';
 
 const axiosInstance = axios.create({
   baseURL: BASE_URL,
@@ -32,25 +32,25 @@ axiosInstance.interceptors.response.use(
   },
 );
 
-const storage = new MMKV();
+// const storage = new MMKV();
 
 const apiClient = setupCache(axiosInstance, {
   ttl: 60 * 60 * 24, // 24 hours
-  storage: {
-    get: key => {
-      return Promise.resolve(
-        JSON.parse(storage.getString(key) ?? ''),
-      ) as unknown as StorageValue;
-    },
-    set: (key, value) => {
-      storage.set(key, JSON.stringify(value));
-      return Promise.resolve();
-    },
-    remove: key => {
-      storage.delete(key);
-      return Promise.resolve();
-    },
-  },
+  // storage: {
+  //   get: key => {
+  //     return Promise.resolve(
+  //       JSON.parse(storage.getString(key) ?? ''),
+  //     ) as unknown as StorageValue;
+  //   },
+  //   set: (key, value) => {
+  //     storage.set(key, JSON.stringify(value));
+  //     return Promise.resolve();
+  //   },
+  //   remove: key => {
+  //     storage.delete(key);
+  //     return Promise.resolve();
+  //   },
+  // },
 });
 
 export default apiClient;
