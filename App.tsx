@@ -63,18 +63,6 @@ const App = () => {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
 
-  useEffect(() => {
-    async function fetchPhotos() {
-      try {
-        const res = await apiClient.get('/photos');
-        const res2 = await apiClient.get('/photos');
-        console.log(res.cached);
-        console.log(res2.cached);
-      } catch (error) {}
-    }
-    fetchPhotos();
-  }, []);
-
   return (
     <SafeAreaView style={backgroundStyle}>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />

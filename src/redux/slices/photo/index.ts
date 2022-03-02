@@ -25,10 +25,10 @@ const photoSlice = createSlice({
       state.photos = action.payload;
       state.errorMessage = '';
     },
-    fetchPhotoFailure(state, action) {
+    fetchPhotoFailure(state, action: PayloadAction<string>) {
       state.isLoading = false;
       state.isError = true;
-      state.errorMessage = 'Something went wrong';
+      state.errorMessage = action.payload;
     },
   },
 });
