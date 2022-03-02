@@ -8,7 +8,7 @@
  * @format
  */
 
-import React from 'react';
+import React, {useEffect} from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -26,6 +26,7 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+import apiClient from './src/configs/apiClient';
 
 const Section: React.FC<{
   title: string;
@@ -61,6 +62,18 @@ const App = () => {
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
+
+  useEffect(() => {
+    async function fetchPhotos() {
+      try {
+        const res = await apiClient.get('/photos');
+        const res2 = await apiClient.get('/photos');
+        console.log(res.cached);
+        console.log(res2.cached);
+      } catch (error) {}
+    }
+    fetchPhotos();
+  }, []);
 
   return (
     <SafeAreaView style={backgroundStyle}>
