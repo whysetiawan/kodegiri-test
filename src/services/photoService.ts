@@ -1,13 +1,23 @@
 import apiClient from '../shared/helpers/apiClient';
-import {IPhotoModel} from '../shared/models/photo_model';
+import {IListPhotos, ISearchPhotos} from '../shared/models/photo_list_model';
 
-function getListPhotos() {
-  return apiClient.get<IPhotoModel>('/photos', {
+async function getListPhotos(page: number) {
+  const res = await apiClient.get<IListPhotos>('/photos', {
     params: {
-      page: 1,
-      per_page: 3,
+      page: page,
     },
   });
+  return res.data;
 }
 
-export {getListPhotos};
+async function searchPhotoByKeyword(query: string, page: number) {
+  const res = await apiClient.get<ISearchPhotos>('search/photos', {
+    params: {
+      query: query,
+      page: page,
+    },
+  });
+  return res.data.results;
+}
+
+export {getListPhotos, searchPhotoByKeyword};

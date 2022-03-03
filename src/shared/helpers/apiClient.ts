@@ -1,6 +1,6 @@
 import axios, {AxiosError} from 'axios';
-import {setupCache, StorageValue} from 'axios-cache-interceptor';
-import {MMKV} from 'react-native-mmkv';
+import {setupCache} from 'axios-cache-interceptor';
+// import {MMKV} from 'react-native-mmkv';
 import {API_KEY1, API_KEY2} from '../constants/api_key';
 import BASE_URL from '../constants/base_url';
 

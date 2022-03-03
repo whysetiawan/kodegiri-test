@@ -1,4 +1,10 @@
-export interface IPhotoModel {
+export interface ISearchPhotos {
+  total?: number;
+  total_pages: number;
+  results: IListPhotos[];
+}
+
+export interface IListPhotos {
   id?: string;
   created_at?: Date;
   updated_at?: Date;

@@ -5,14 +5,18 @@ import globalStyles from '../../../shared/styles/globalStyles';
 
 const SearchBar: React.FC<{
   onChangeText: (text: string) => void;
-}> = ({onChangeText}) => {
+  placeholder?: string;
+}> = ({onChangeText, placeholder}) => {
   return (
     <View
       style={[
         globalStyles.verticalDefaultPadding,
         globalStyles.horizontalDefaultPadding,
       ]}>
-      <FormTextField onChangeText={onChangeText} />
+      <FormTextField
+        onChangeText={onChangeText}
+        placeholder={placeholder ?? 'Search ...'}
+      />
     </View>
   );
 };
